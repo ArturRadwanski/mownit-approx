@@ -1,0 +1,120 @@
+\documentclass[twoside]{article}
+
+\usepackage{graphicx}
+\usepackage[polish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[
+    a4paper,
+    inner=2.5cm,   % margines wewnętrzny
+    outer=2.5cm,   % margines zewnętrzny
+    top=2.5cm,     % margines górny
+    bottom=2.5cm,  % margines dolny
+    footskip=1cm,  % odległość numeru strony od tekstu
+    headheight=15pt % ważne dla pakietu fancyhdr
+]{geometry}
+
+\definecolor{mojkolor}{RGB}{45, 45, 100}
+
+\pagestyle{fancy}
+\fancyhf{} % Wyczyszczenie domyślnych ustawień
+\fancyhead[LE]{Aproksymacja Wielomianowa}
+\fancyhead[LO]{Artur Radwański - grupa 4} % Lewa strona nagłówka
+\fancyhead[R]{\thepage} % Prawa strona nagłówka
+\renewcommand{\headrulewidth}{0.4pt}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{mojkolor}} % Styl pisma
+  {\thesection}                               % Numeracja
+  {1em}                                       % Odstęp
+  {}                                          % Tekst przed tytułem
+  [{\color{mojkolor}\titlerule[1.5pt]}]       % KRESKA PO TYTULE (bezpieczna metoda)
+
+% Dodatkowy odstęp pod kreską, żeby tekst nie "przyklejał" się do niej
+\titlespacing*{\section}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+
+\begin{document}
+\begin{titlepage}
+\centering
+\Large
+\vspace*{1cm}
+\begin{Huge}
+ \textbf{Laboratorium Metod Obliczeniowych w Nauce i Technice - ćwiczenie 4a}
+\end{Huge}
+
+
+\vspace{0.5cm}
+Ćwiczenie 4a - Aproksymacja Wielomianowa
+            
+ \vspace{1.5cm}
+
+\begin{LARGE}
+\textbf{Autor:}
+\end{LARGE}
+Artur Radwański
+
+
+
+\vfill
+            
+Kraków\\ Semestr letni 2026
+
+            
+\vspace{0.8cm}
+
+ \includegraphics[width=0.4\textwidth]{agh.png}
+            
+Wydział Informatyki\\
+Akademia Górniczo-Hutnicza\\
+
+
+\end{titlepage}
+
+\section{System}
+\begin{itemize}
+    \item Procesor: AMD Ryzen 7 9800x3d
+    \item System operacyjny: 6.19.9-arch1-1 (Linux)
+    \item Język programowania: c++23
+    \item Kompilator: gcc version 15.2.1 20260209 (GCC) 
+\end{itemize}
+
+\section{Zadanie}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
