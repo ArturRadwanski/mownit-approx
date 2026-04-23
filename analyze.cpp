@@ -47,17 +47,9 @@ ApproximationResult analyzeApproximationError(
     }
 
     // Odchylenie standardowe błędów
-    double meanError = 0.0; // Zakładamy dążenie do zera, ale dla rygoru:
-    for(double e : errors) meanError += e;
-    meanError /= numTestPoints;
+    double endSquaredErr = std::sqrt(sumSquaredErr) / numTestPoints;
 
-    double variance = 0.0;
-    for(double e : errors) {
-        variance += std::pow(e - meanError, 2);
-    }
-    double stdDev = std::sqrt(variance / numTestPoints);
-
-    return {maxErr, stdDev};
+    return {maxErr, endSquaredErr};
 }
 
 

@@ -82,7 +82,62 @@ Akademia Górniczo-Hutnicza\\
 \end{itemize}
 
 \section{Zadanie}
+Celem zadania było zbadanie jak liczebność układu funkcji bazowych oraz zmienna liczba punktów dyskretyzacji wpływa na jakość aproksymacji. Badania przeprowadzono
+dla przykładowej funkcji.
+\begin{equation}
+f(x) = -2x\sin(2(x-1))\hspace{5ex}  x\in[-2\pi+1,3\pi+1]
+\end{equation}
 
+\subsection{Model aproksymacji}
+Wyznaczony wielomian aproksymacyjny $P_m(x)$ stopnia $m$ definiuje się jako kombinację liniową wielomianów Czebyszewa pierwszego rodzaju $T_i(x)$:
+
+\begin{equation}
+P_m(x) = \frac{1}{2}c_0 + \sum_{i=1}^{m} c_i T_i(\hat{x})
+\end{equation}
+
+gdzie $\hat{x} \in [-1, 1]$ jest wartością argumentu $x$ poddaną transformacji liniowej z przedziału $[a, b]$ według wzoru:
+
+\begin{equation}
+\hat{x} = \frac{2x - (a+b)}{b-a}
+\end{equation}
+
+Współczynniki $c_i$ wyznaczane są metodą najmniejszych kwadratów. Dzięki zastosowaniu węzłów Czebyszewa jako punktów próbkowania:
+
+\begin{equation}
+x_k = \cos\left( \frac{2k-1}{2n} \pi \right), \quad k=1, \dots, n
+\end{equation}
+
+macierz układu równań normalnych staje się diagonalna, co pozwala na bezpośrednie wyliczenie współczynników z pominięciem kosztownej i podatnej na błędy eliminacji Gaussa.
+
+\subsection{Algorytm Clenshawa}
+Do efektywnego wyznaczania wartości wielomianu wykorzystano algorytm Clenshawa. Pozwala on na uniknięcie jawnego obliczania wartości poszczególnych wielomianów $T_i(x)$, co redukuje liczbę operacji zmiennoprzecinkowych. Proces przebiega według zależności rekurencyjnej:
+
+\begin{equation}
+b_k = c_k + 2\hat{x}b_{k+1} - b_{k+2}
+\end{equation}
+
+przy warunkach początkowych $b_{m+1} = b_{m+2} = 0$. Wynik końcowy obliczany jest jako:
+\begin{equation}
+P_m(x) = c_0 + \hat{x}b_1 - b_2
+\end{equation}
+
+\subsection{Metodyka pomiaru błędu}
+Dokładność modeli została zweryfikowana na gęstej siatce $N = 10\,000$ równoodległych punktów testowych. W każdym punkcie wyznaczono błąd bezwzględny $\varepsilon_i = |f(x_i) - P_m(x_i)|$. Na podstawie tych danych obliczono:
+
+\begin{itemize}
+    \item \textbf{Błąd maksymalny ($E_{max}$)}:
+    \begin{equation}
+    E_{max} = \max_{1 \le i \le N} (\varepsilon_i)
+    \end{equation}
+    
+    \item \textbf{Błąd średnikwadratowy ($\sigma$)}:
+    \begin{equation}
+    \sigma = \frac{\sum_{i=1}^{N}(\varepsilon_{i})}{N}
+    \end{equation}
+    gdzie $\bar{\varepsilon}$ to średnia wartość błędu bezwzględnego.
+\end{itemize}
+
+Badania przeprowadzono dla różnych kombinacji liczby węzłów próbkowania $n$ oraz stopnia wielomianu $m$, co pozwoliło na analizę zbieżności metody.
 \end{document}
 
 
