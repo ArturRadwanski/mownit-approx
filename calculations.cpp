@@ -12,6 +12,10 @@ double givenFunction(const double x) {
     return -2 * x * sin(2*(x-1));
 }
 
+// double givenFunction(const double x) {
+//     return 30 * x * 11 * exp(-11) - 30*exp(-11.0 * x) + (1/30);
+// }
+
 
 
 /**
@@ -24,22 +28,39 @@ struct ChebyshevSpace {
 };
 
 /**
- * Generuje optymalne węzły Czebyszewa dla danego przedziału.
- * To w tych punktach POWINIENEŚ próbkować swoją funkcję jawną f(x).
+ * Generuj węzły Czebyszewa dla danego przedziału
  */
 std::vector<double> generateNodes(int n, double a, double b) {
     std::vector<double> nodes(n);
     ChebyshevSpace space{a, b};
     for (int k = 1; k <= n; ++k) {
-        // Zera wielomianu Czebyszewa w przedziale [-1, 1]
         double x_scaled = std::cos((2.0 * k - 1.0) / (2.0 * n) * std::numbers::pi);
         nodes[k - 1] = space.to_range(x_scaled);
     }
     return nodes;
 }
-std::vector<double> valuesInNodes(std::vector<double> nodes) {
+std::vector<double> generateEvenNodes(int n, double a, double b) {
+    std::vector<double> nodes(n);
+    const double step = (b - a) / (n - 1);
+    for (int i=0;i<n;i++) {
+        nodes[i] = a + step*i;
+    }
+    return nodes;
+}
+
+// std::vector<double> generateEvenNodes(const int n, const double a, const double b) {
+//     std::vector<double> nodes(n);
+//     const double step = (b - a) / (n - 1.0);
+//     for (int i=0;i<n;i++) {
+//         nodes.push_back(a + i * step);
+//     }
+//     return nodes;
+// }
+
+
+std::vector<double> valuesInNodes(const std::vector<double> *nodes) {
     std::vector<double> values;
-    for (auto node: nodes) {
+    for (const auto node: *nodes) {
         double y = givenFunction(node);
         values.push_back(y);
     }
@@ -50,7 +71,7 @@ std::vector<double> valuesInNodes(std::vector<double> nodes) {
  * n - liczba węzłów, m - stopień wielomianu (m < n)
  */
 std::vector<double> calculateCoefficients(int m, const std::vector<double>& sampled_y) {
-    int n = sampled_y.size();
+    const int n = sampled_y.size();
     std::vector<double> coeffs(m + 1, 0.0);
 
     for (int j = 0; j <= m; ++j) {
@@ -61,13 +82,55 @@ std::vector<double> calculateCoefficients(int m, const std::vector<double>& samp
         }
         coeffs[j] = (2.0 / n) * sum;
     }
-    // Pierwszy współczynnik w bazie Czebyszewa jest tradycyjnie dzielony przez 2
     coeffs[0] /= 2.0;
     return coeffs;
 }
+std::vector<double> calculateCosineCoefficients(int m, const std::vector<double>& sampled_y, const std::vector<double>& nodes, const double start, const double end) {
+    const int n = sampled_y.size();
+    std::vector<double> coeffs(m + 1, 0.0);
+    const double scaled = 2 * std::numbers::pi / (end - start);
+    for (int j = 0; j <= m; ++j) {
+        double numerator = 0.0;
+        double denominator = 0.0;
+        for (int k = 0; k < n - 1; ++k) {
+            const double x_k = nodes[k];
+            const double cosValue = cos(j * (x_k - start) * scaled);
+            numerator+= sampled_y[k] * cosValue;
+            denominator+= cosValue * cosValue;
+        }
+        coeffs[j] = denominator == 0.0 ? 0.0 : numerator / denominator;
+    }
+    return coeffs;
+}
 
+std::vector<double> calculateSineCoefficients(int m, const std::vector<double>& sampled_y, const std::vector<double>& nodes, const double start, const double end) {
+    const int n = sampled_y.size();
+    std::vector<double> coeffs(m + 1, 0.0);
+    const double scaled = 2 * std::numbers::pi / (end - start);
+    for (int j = 0; j <= m; ++j) {
+        double numerator = 0.0;
+        double denominator = 0.0;
+        for (int k = 0; k < n - 1; ++k) {
+            const double x_k = nodes[k];
+            const double sinValue = sin(j * (x_k - start) * scaled);
+            numerator+= sampled_y[k] * sinValue;
+            denominator+= sinValue * sinValue;
+        }
+        coeffs[j] = denominator == 0.0 ? 0.0 : numerator / denominator;
+    }
+    return coeffs;
+}
+
+double getTrigValue(const double x, const std::vector<double>& sineCoefficients, const std::vector<double>& cosineCoefficients, const double start, const double end) {
+    double result = 0.0;
+    const double scaled = 2 * std::numbers::pi / (end - start);
+    for (int i=0; i<sineCoefficients.size(); ++i) {
+        result += sineCoefficients.at(i) * sin(i*(x-start) * scaled) + cosineCoefficients.at(i) * cos(i*(x - start)*scaled);
+    }
+    return result;
+}
 /**
- * Algorytm Clenshawa - odczyt wartości
+ * odczyt wartości
  */
 double getValue(const double x_raw, std::span<const double> coeffs, const double a, const double b) {
     ChebyshevSpace space{a, b};

@@ -1,0 +1,24 @@
+\begin{table}[h]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{|l|ccccccccccccccccccccc|}
+\hline
+n \textbackslash m & 0 & 2 & 4 & 6 & 8 & 10 & 12 & 14 & 16 & 18 & 20 \\\hline
+5 & \cellcolor{red!84}2.103e+01 & \cellcolor{red!93}2.326e+01 & \cellcolor{red!84}2.118e+01 \\
+10 & \cellcolor{red!74}1.871e+01 & \cellcolor{red!79}1.987e+01 & \cellcolor{red!65}1.636e+01 & \cellcolor{red!58}1.474e+01 & \cellcolor{red!99}2.491e+01 \\
+15 & \cellcolor{red!73}1.835e+01 & \cellcolor{red!77}1.934e+01 & \cellcolor{red!68}1.710e+01 & \cellcolor{red!68}1.718e+01 & \cellcolor{red!59}1.476e+01 & \cellcolor{red!44}1.104e+01 & \cellcolor{red!36}9.052e+00 & \cellcolor{red!31}7.951e+00 \\
+20 & \cellcolor{red!73}1.835e+01 & \cellcolor{red!77}1.934e+01 & \cellcolor{red!68}1.710e+01 & \cellcolor{red!68}1.718e+01 & \cellcolor{red!59}1.481e+01 & \cellcolor{red!42}1.064e+01 & \cellcolor{red!32}8.155e+00 & \cellcolor{red!21}5.405e+00 & \cellcolor{red!8}2.240e+00 & \cellcolor{red!2}6.607e-01 \\
+25 & \cellcolor{red!73}1.835e+01 & \cellcolor{red!77}1.934e+01 & \cellcolor{red!68}1.710e+01 & \cellcolor{red!68}1.718e+01 & \cellcolor{red!59}1.481e+01 & \cellcolor{red!42}1.064e+01 & \cellcolor{red!32}8.155e+00 & \cellcolor{red!21}5.405e+00 & \cellcolor{red!8}2.240e+00 & \cellcolor{red!2}6.344e-01 & \cellcolor{red!0}1.333e-01 \\
+30 & \cellcolor{red!73}1.835e+01 & \cellcolor{red!77}1.934e+01 & \cellcolor{red!68}1.710e+01 & \cellcolor{red!68}1.718e+01 & \cellcolor{red!59}1.481e+01 & \cellcolor{red!42}1.064e+01 & \cellcolor{red!32}8.155e+00 & \cellcolor{red!21}5.405e+00 & \cellcolor{red!8}2.240e+00 & \cellcolor{red!2}6.344e-01 & \cellcolor{red!0}1.333e-01 \\
+35 & \cellcolor{red!73}1.835e+01 & \cellcolor{red!77}1.934e+01 & \cellcolor{red!68}1.710e+01 & \cellcolor{red!68}1.718e+01 & \cellcolor{red!59}1.481e+01 & \cellcolor{red!42}1.064e+01 & \cellcolor{red!32}8.155e+00 & \cellcolor{red!21}5.405e+00 & \cellcolor{red!8}2.240e+00 & \cellcolor{red!2}6.344e-01 & \cellcolor{red!0}1.333e-01 \\
+40 & \cellcolor{red!73}1.835e+01 & \cellcolor{red!77}1.934e+01 & \cellcolor{red!68}1.710e+01 & \cellcolor{red!68}1.718e+01 & \cellcolor{red!59}1.481e+01 & \cellcolor{red!42}1.064e+01 & \cellcolor{red!32}8.155e+00 & \cellcolor{red!21}5.405e+00 & \cellcolor{red!8}2.240e+00 & \cellcolor{red!2}6.344e-01 & \cellcolor{red!0}1.333e-01 \\
+45 & \cellcolor{red!73}1.835e+01 & \cellcolor{red!77}1.934e+01 & \cellcolor{red!68}1.710e+01 & \cellcolor{red!68}1.718e+01 & \cellcolor{red!59}1.481e+01 & \cellcolor{red!42}1.064e+01 & \cellcolor{red!32}8.155e+00 & \cellcolor{red!21}5.405e+00 & \cellcolor{red!8}2.240e+00 & \cellcolor{red!2}6.344e-01 & \cellcolor{red!0}1.333e-01 \\
+50 & \cellcolor{red!73}1.835e+01 & \cellcolor{red!77}1.934e+01 & \cellcolor{red!68}1.710e+01 & \cellcolor{red!68}1.718e+01 & \cellcolor{red!59}1.481e+01 & \cellcolor{red!42}1.064e+01 & \cellcolor{red!32}8.155e+00 & \cellcolor{red!21}5.405e+00 & \cellcolor{red!8}2.240e+00 & \cellcolor{red!2}6.344e-01 & \cellcolor{red!0}1.333e-01 \\
+55 & \cellcolor{red!73}1.835e+01 & \cellcolor{red!77}1.934e+01 & \cellcolor{red!68}1.710e+01 & \cellcolor{red!68}1.718e+01 & \cellcolor{red!59}1.481e+01 & \cellcolor{red!42}1.064e+01 & \cellcolor{red!32}8.155e+00 & \cellcolor{red!21}5.405e+00 & \cellcolor{red!8}2.240e+00 & \cellcolor{red!2}6.344e-01 & \cellcolor{red!0}1.333e-01 \\
+60 & \cellcolor{red!73}1.835e+01 & \cellcolor{red!77}1.934e+01 & \cellcolor{red!68}1.710e+01 & \cellcolor{red!68}1.718e+01 & \cellcolor{red!59}1.481e+01 & \cellcolor{red!42}1.064e+01 & \cellcolor{red!32}8.155e+00 & \cellcolor{red!21}5.405e+00 & \cellcolor{red!8}2.240e+00 & \cellcolor{red!2}6.344e-01 & \cellcolor{red!0}1.333e-01 \\
+\hline
+\end{tabular}
+\caption{Mapa błędu maksymalnego (intensywniejszy czerwony = większy błąd)}
+\label{tab:max}
+\end{table}

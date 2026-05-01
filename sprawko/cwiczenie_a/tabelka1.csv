@@ -1,0 +1,24 @@
+\begin{table}[h]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{|l|ccccccccccccccccccccc|}
+\hline
+n \textbackslash m & 0 & 2 & 4 & 6 & 8 & 10 & 12 & 14 & 16 & 18 & 20 \\\hline
+5 & \cellcolor{orange!100}8.245e+00 & \cellcolor{orange!93}7.443e+00 & \cellcolor{orange!87}7.022e+00 \\
+10 & \cellcolor{orange!93}7.447e+00 & \cellcolor{orange!87}7.012e+00 & \cellcolor{orange!85}6.846e+00 & \cellcolor{orange!91}7.325e+00 & \cellcolor{orange!98}7.852e+00 \\
+15 & \cellcolor{orange!92}7.382e+00 & \cellcolor{orange!86}6.943e+00 & \cellcolor{orange!83}6.668e+00 & \cellcolor{orange!85}6.813e+00 & \cellcolor{orange!73}5.850e+00 & \cellcolor{orange!59}4.789e+00 & \cellcolor{orange!47}3.786e+00 & \cellcolor{orange!41}3.357e+00 \\
+20 & \cellcolor{orange!92}7.382e+00 & \cellcolor{orange!86}6.943e+00 & \cellcolor{orange!83}6.667e+00 & \cellcolor{orange!85}6.815e+00 & \cellcolor{orange!73}5.846e+00 & \cellcolor{orange!59}4.730e+00 & \cellcolor{orange!45}3.650e+00 & \cellcolor{orange!34}2.745e+00 & \cellcolor{orange!15}1.221e+00 & \cellcolor{orange!4}3.738e-01 \\
+25 & \cellcolor{orange!92}7.382e+00 & \cellcolor{orange!86}6.943e+00 & \cellcolor{orange!83}6.667e+00 & \cellcolor{orange!85}6.815e+00 & \cellcolor{orange!73}5.846e+00 & \cellcolor{orange!59}4.730e+00 & \cellcolor{orange!45}3.650e+00 & \cellcolor{orange!34}2.744e+00 & \cellcolor{orange!15}1.219e+00 & \cellcolor{orange!4}3.580e-01 & \cellcolor{orange!0}7.622e-02 \\
+30 & \cellcolor{orange!92}7.382e+00 & \cellcolor{orange!86}6.943e+00 & \cellcolor{orange!83}6.667e+00 & \cellcolor{orange!85}6.815e+00 & \cellcolor{orange!73}5.846e+00 & \cellcolor{orange!59}4.730e+00 & \cellcolor{orange!45}3.650e+00 & \cellcolor{orange!34}2.744e+00 & \cellcolor{orange!15}1.219e+00 & \cellcolor{orange!4}3.580e-01 & \cellcolor{orange!0}7.622e-02 \\
+35 & \cellcolor{orange!92}7.382e+00 & \cellcolor{orange!86}6.943e+00 & \cellcolor{orange!83}6.667e+00 & \cellcolor{orange!85}6.815e+00 & \cellcolor{orange!73}5.846e+00 & \cellcolor{orange!59}4.730e+00 & \cellcolor{orange!45}3.650e+00 & \cellcolor{orange!34}2.744e+00 & \cellcolor{orange!15}1.219e+00 & \cellcolor{orange!4}3.580e-01 & \cellcolor{orange!0}7.622e-02 \\
+40 & \cellcolor{orange!92}7.382e+00 & \cellcolor{orange!86}6.943e+00 & \cellcolor{orange!83}6.667e+00 & \cellcolor{orange!85}6.815e+00 & \cellcolor{orange!73}5.846e+00 & \cellcolor{orange!59}4.730e+00 & \cellcolor{orange!45}3.650e+00 & \cellcolor{orange!34}2.744e+00 & \cellcolor{orange!15}1.219e+00 & \cellcolor{orange!4}3.580e-01 & \cellcolor{orange!0}7.622e-02 \\
+45 & \cellcolor{orange!92}7.382e+00 & \cellcolor{orange!86}6.943e+00 & \cellcolor{orange!83}6.667e+00 & \cellcolor{orange!85}6.815e+00 & \cellcolor{orange!73}5.846e+00 & \cellcolor{orange!59}4.730e+00 & \cellcolor{orange!45}3.650e+00 & \cellcolor{orange!34}2.744e+00 & \cellcolor{orange!15}1.219e+00 & \cellcolor{orange!4}3.580e-01 & \cellcolor{orange!0}7.622e-02 \\
+50 & \cellcolor{orange!92}7.382e+00 & \cellcolor{orange!86}6.943e+00 & \cellcolor{orange!83}6.667e+00 & \cellcolor{orange!85}6.815e+00 & \cellcolor{orange!73}5.846e+00 & \cellcolor{orange!59}4.730e+00 & \cellcolor{orange!45}3.650e+00 & \cellcolor{orange!34}2.744e+00 & \cellcolor{orange!15}1.219e+00 & \cellcolor{orange!4}3.580e-01 & \cellcolor{orange!0}7.622e-02 \\
+55 & \cellcolor{orange!92}7.382e+00 & \cellcolor{orange!86}6.943e+00 & \cellcolor{orange!83}6.667e+00 & \cellcolor{orange!85}6.815e+00 & \cellcolor{orange!73}5.846e+00 & \cellcolor{orange!59}4.730e+00 & \cellcolor{orange!45}3.650e+00 & \cellcolor{orange!34}2.744e+00 & \cellcolor{orange!15}1.219e+00 & \cellcolor{orange!4}3.580e-01 & \cellcolor{orange!0}7.622e-02 \\
+60 & \cellcolor{orange!92}7.382e+00 & \cellcolor{orange!86}6.943e+00 & \cellcolor{orange!83}6.667e+00 & \cellcolor{orange!85}6.815e+00 & \cellcolor{orange!73}5.846e+00 & \cellcolor{orange!59}4.730e+00 & \cellcolor{orange!45}3.650e+00 & \cellcolor{orange!34}2.744e+00 & \cellcolor{orange!15}1.219e+00 & \cellcolor{orange!4}3.580e-01 & \cellcolor{orange!0}7.622e-02 \\
+\hline
+\end{tabular}
+\caption{Mapa błędu średniokwadratowego (intensywniejszy pomarańczowy = większy błąd)}
+\label{tab:MSE}
+\end{table}

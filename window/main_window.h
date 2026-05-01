@@ -33,9 +33,12 @@ private:
     double minX;
     double maxY;
     double minY;
+    QVector<std::tuple<QVector<double>, QVector<double>>> graphs;
 
 private slots:
-void on_drawButton_clicked();
+    void on_drawButton_clicked();
+    void on_addDrawingButton_clicked();
+    //void on_hideDrawingButton_clicked();
 };
 
 

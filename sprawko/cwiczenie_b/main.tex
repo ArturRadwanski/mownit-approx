@@ -1,0 +1,200 @@
+\documentclass[twoside]{article}
+
+\usepackage{graphicx}
+\usepackage[polish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[table,dvipsnames]{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[
+    a4paper,
+    inner=2.5cm,   
+    outer=2.5cm,   
+    top=2.5cm,     
+    bottom=2.5cm,  
+    footskip=1cm,  
+    headheight=15pt 
+]{geometry}
+\usepackage{float}
+
+
+
+
+\definecolor{mojkolor}{RGB}{45, 45, 100}
+
+\pagestyle{fancy}
+\fancyhf{} % Wyczyszczenie domyślnych ustawień
+\fancyhead[LE]{Aproksymacja Wielomianowa}
+\fancyhead[LO]{Artur Radwański - grupa 4} % Lewa strona nagłówka
+\fancyhead[R]{\thepage} % Prawa strona nagłówka
+\renewcommand{\headrulewidth}{0.4pt}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{mojkolor}} % Styl pisma
+  {\thesection}                               % Numeracja
+  {1em}                                       % Odstęp
+  {}                                          % Tekst przed tytułem
+  [{\color{mojkolor}\titlerule[1.5pt]}]       % KRESKA PO TYTULE (bezpieczna metoda)
+
+% Dodatkowy odstęp pod kreską, żeby tekst nie "przyklejał" się do niej
+\titlespacing*{\section}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+
+\begin{document}
+\begin{titlepage}
+\centering
+\Large
+\vspace*{1cm}
+\begin{Huge}
+ \textbf{Laboratorium Metod Obliczeniowych w Nauce i Technice - ćwiczenie 4a}
+\end{Huge}
+
+
+\vspace{0.5cm}
+Ćwiczenie 4b - Aproksymacja Trygonometryczna
+            
+ \vspace{1.5cm}
+
+\begin{LARGE}
+\textbf{Autor:}
+\end{LARGE}
+Artur Radwański
+
+
+
+\vfill
+            
+Kraków\\ Semestr letni 2026
+
+            
+\vspace{0.8cm}
+
+ \includegraphics[width=0.4\textwidth]{img/agh.png}
+            
+Wydział Informatyki\\
+Akademia Górniczo-Hutnicza\\
+
+
+\end{titlepage}
+
+\section{System}
+\begin{itemize}
+    \item Procesor: AMD Ryzen 7 9800x3d
+    \item System operacyjny: 6.19.9-arch1-1 (Linux)
+    \item Język programowania: c++23
+    \item Kompilator: gcc version 15.2.1 20260209 (GCC) 
+\end{itemize}
+
+\section{Zadanie}
+Celem zadania było zbadanie jak liczebność układu funkcji bazowych oraz zmienna liczba punktów dyskretyzacji wpływa na jakość aproksymacji. Badania przeprowadzono
+dla przykładowej funkcji.
+\begin{equation}
+f(x) = -2x\sin(2(x-1))\hspace{5ex}  x\in[-2\pi+1,3\pi+1]
+\end{equation}
+
+\subsection{Model aproksymacji}
+W całym sprawozdaniu przyjęto oznaczena $n$ - liczba węzłów aproksymacji, $m$ - najwyższa użyta częstotliwość do tworzenia funkcji aprosymującej.
+Wyznaczoną funkcję aproksymacyjną $P_m(x)$  definiuje się jako kombinację liniową funkcji trygonometrycznych o różnych częstotliwościach.
+
+\begin{equation}
+P_m(\hat{x}) = \sum_{i=0}^{m} a_i \cos{i\hat{x}} + b_i \sin{i\hat{x}}
+\end{equation}
+
+gdzie $\hat{x} \in [0, 2\pi]$ jest wartością argumentu $x$ z przedziału $[a, b]$, poddaną transformacji liniowej według wzoru:
+
+\begin{equation}
+\hat{x} = (x - a) \frac{2\pi}{b-a}
+\label{eq:transforamtion}
+\end{equation}
+
+
+Funkcje trygonometryczne są ortogonalne do siebie w punktach równoodległych na przedziale $[0, 2\pi]$, dlatego układ równań którego rozwiązaniem są 
+wspóczynniki przy kolejnych częstotliwościach upraszcza się do jawnych wzorów na każdy ze współczynników. (Źródło wykład dr. Rycerz wyk4\_aproksymacja - slajd 17)
+
+\begin{equation}
+a_j = \frac{\sum_{i=0}^{n}f(x_i)\cos{(j\hat{x_i})}}{\sum_{i=0}^{n}\cos^{2}(j\hat{x_i})}
+\end{equation}
+
+\begin{equation}
+b_j = \frac{\sum_{i=0}^{n}f(x_i)\sin{(j\hat{x_i})}}{\sum_{i=0}^{n}\sin^{2}(j\hat{x_i})}
+\end{equation}
+
+Gdzie $x_i$ to współrzędne $x$ kolejnych węzłów interpolacji, a $\hat{x_i}$ to wartości x kolejnych węzłów interpolacji poddane transformacji opisanej w równaniu
+Jeżeli nie napisano inaczej, to domyślnie podane są wyniki biorące pod uwagę wszystkie węzły interpolacji.
+\ref{eq:transforamtion}
+
+\vspace{5pt}
+
+\textbf{\textcolor{red}{Uwaga}}: Jeśli wszystkie węzły interpolacji są równocześnie miejscami zerowymi jakiejś częstotliwości, to dana częstotliwość nie jest
+ortogonalna w węzłach interpolacji do pozostałych częstotliwości, a wartość współczynnika przy niej nie ma wpływu na rozważany układ równań, dlatego
+w takim przypadku wartość współczynnika jest ustawiana na 0.
+
+\subsection{Metodyka pomiaru błędu}
+Dokładność modeli została zweryfikowana na gęstej siatce $N = 1000$ równoodległych punktów testowych. W każdym punkcie wyznaczono błąd bezwzględny $\varepsilon_i = |f(x_i) - P_m(x_i)|$. Na podstawie tych danych obliczono:
+
+\begin{itemize}
+    \item \textbf{Błąd maksymalny ($E_{max}$)}:
+    \begin{equation}
+    E_{max} = \max_{1 \le i \le N} (\varepsilon_i)
+    \end{equation}
+    
+    \item \textbf{Błąd średnikwadratowy (MSE)}:
+    \begin{equation}
+    MSE = \frac{\sqrt{\sum_{i=1}^{N}(\varepsilon_{i})}}{N}
+    \end{equation}
+    gdzie $\bar{\varepsilon}$ to średnia wartość błędu bezwzględnego.
+\end{itemize}
+
+Badania przeprowadzono dla różnych kombinacji liczby węzłów $n$ oraz stopnia wielomianu $m$, 
+co pozwoliło na analizę zbieżności metody.
+
+
+
+
+\section*{Analiza wyników aproksymacji dla niskich częstotliwości}
+\input{table_small_values_max.tex}
+\input{table_small_values_min.tex}
+Pierwsza część badań skupia się na zachowaniu modelu w zakresie niskich rzędów harmonicznych $m \in [2, 10]$.
+
+\begin{itemize}
+    \item \textbf{Dominacja błędu aproksymacji :} W tym zakresie błąd jest determinowany głównie przez zbyt małą złożoność aproksymacji.
+    Nawet przy dużej liczbie węzłów ($n=100$), błąd MSE (tabela \ref{tab:small_values_square}) dla $m=2$ pozostaje na wysokim poziomie ($0.2193$).
+    Oznacza to, że niska liczba funkcji bazowych nie jest w stanie opisać dynamiki funkcji, niezależnie od gęstości próbkowania.
+    \item \textbf{Nieliniowy spadek błędu:} W tabeli \ref{tab:small_values_max} widoczny jest wyraźny spadek  między $m=5$ a $m=6$ 
+    (spadek z $14.27$ do $9.80$). Oznacza to, że pierwszy widoczny spadek błędu występuje gdy $m$ robi się większe niż połowa liczby esktremów(10) w orginalnej
+    funkcji. Jak widać na rysunkach \ref{fig:before_enough_extremes} i \ref{fig:after_enough_extremes} po przekroczeniu tego progu, ekstrema funkcji
+    aproksymacyjnej "dopasowywują się" do ekstremów funkcji aproksymowanej.
+\end{itemize}  
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{img/wykresn20m5.png}
+    \caption{Aproksymacja dla $n$ = 20, $m$ = 5}
+    \label{fig:before_enough_extremes}
+
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{img/wykresn20m6.png}
+    \caption{Aproksymacja dla $n$ = 20, $m$ = 6}
+    \label{fig:after_enough_extremes}
+
+\end{figure}
+
+\section*{Analiza wyników aproksymacji dla wysokich częstotliwości}
+\input{table_big_values_max.tex}
+\input{table_big_values_min.tex}
+Poniższa analiza opiera się na danych dotyczących błędów maksymalnych oraz MSE dla rzędów $m \in [10, 100]$ i liczby węzłów $n \in [30, 300]$.
+
+\begin{itemize}
+    \item \textbf{Wpływ rzędu aproksymacji ($m$):} Zauważalna jest silna korelacja ujemna między rzędem $m$ a wartością błędu. Dla stałej liczby węzłów $n=300$, 
+    zwiększenie $m$ z 10 do 100 skutkuje redukcją błędu maksymalnego (tabela \ref{tab:big_values_max}) z poziomu $5.124$ do $0.298$ oraz redukcją błędu
+    MSE (tabela \ref{tab:big_values_square}) z poziomu $0.026$. do poziomu $0.001$.
+    \item \textbf{Efekt nasycenia liczby węzłów ($n$):} W przypadku błędu MSE(\ref{tab:big_values_square}) widoczny jest efekt nasycenia. Od pewnego momentu, zwiększanie liczby węzłów
+    interpolacji przynosi marginalne zmniejszenie błędu.
+    \item \textbf{Stabilność numeryczna:} Najniższe wartości błędów (obszar najjaśniejszy w tabelach \ref{tab:big_values_max} i \ref{tab:big_values_square}) występują dla $n=300$ i $m=100$. Metoda dobrze skaluje się
+    z ilością danych i jest odporna na błędy numeryczne.
+\end{itemize}
+
+\end{document}
